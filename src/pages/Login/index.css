@@ -1,0 +1,57 @@
+.plus-margin-bottom{
+    margin-bottom: 20px;
+}
+
+.feedback-login{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 10px;
+    margin: 0;
+}
+
+.form-sub-container a{
+    color: #fff;
+}
+
+.login-check-container{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.login-checkbox{
+    width: 16px;
+    margin: 0 4px 0 0;
+}
+
+.login-check-label{
+    width: 150px;
+}
+
+.buttons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.login-outline-btn{
+    font-family: "Pontano Sans", sans-serif;
+    border: 2px solid #fff;
+    padding: 12px 0;
+    width: 45%;
+    font-size: 12px;
+}
+
+.register-link{
+    font-family: "Pontano Sans", sans-serif;
+    width: 100%;
+    border-top: 1px solid #fff;
+    text-align: start;
+    font-size: 12px;
+}
+
+.register-link a{
+    color: #fff;
+}

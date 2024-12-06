@@ -1,5 +1,10 @@
 body {
   margin: 0;
+  width: 100%;
+  background-image: url("./assets/backGround.jpg");
+  background-color: #fff;
+  background-blend-mode: luminosity;
+  max-width: 1440px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
