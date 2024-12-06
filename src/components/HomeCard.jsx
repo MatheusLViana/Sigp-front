@@ -7,7 +7,7 @@ function HomeCard(props){
     {props.isClickable ? (
         <div
           className='clickablecard-container'
-          onClick={props.onClick}
+          onClick={props.href}
           style={{backgroundImage:'url(' + props.backgroundImg + ')'}}
         />
     ) : (
@@ -17,7 +17,7 @@ function HomeCard(props){
             <Button
               title={props.buttonTitle}
               icon={props.buttonIcon}
-              href={props.onClick}
+              href={props.href}
               buttonType={props.buttonType}
             />
         </div>

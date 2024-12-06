@@ -16,7 +16,7 @@ function Navbar(){
           <p className='navbar-logo-txt'>Sistema Integrado de Gestão Pública</p>
         </a>
         <div className='links-container'>
-          <a className='navbar-thin-link' href='/servicos'>Serviços</a>
+          <a className='navbar-thin-link' href='/services'>Serviços</a>
           <a className='navbar-thin-link' href='/ouvidoria'>Ouvidoria</a>
           <a className='navbar-thin-link' href='/status'>Status de Serviços</a>
         </div>
@@ -29,7 +29,7 @@ function Navbar(){
         </div>
       </div>
       <ul className={click ? 'mobile-menu-list active' : 'mobile-menu-list'}>
-        <li><a className='navbar-thin-link' href='/servicos'>Serviços</a></li>
+        <li><a className='navbar-thin-link' href='/services'>Serviços</a></li>
         <li><a className='navbar-thin-link' href='/ouvidoria'>Ouvidoria</a></li>
         <li><a className='navbar-thin-link' href='/status'>Status de Serviços</a></li>
         <li><a className='login-btn' href='/login'>ENTRAR</a></li>

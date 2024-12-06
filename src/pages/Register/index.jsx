@@ -10,7 +10,7 @@ function Register() {
   const [password, setPassword] = useState('') 
 
   return (
-    <div className='blue-card'>
+    <div className='blue-card vertical-padding'>
       <div className='central-container'>
         <div className='logo-container'>
             <img src={logo} className="navbar-logo" alt="logo" />

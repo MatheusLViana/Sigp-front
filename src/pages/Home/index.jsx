@@ -20,6 +20,7 @@ function Home() {
           text="Conheça nosso sistema de atendimento ao cidadão"
           buttonTitle="ACESSAR OUVIDORIA"
           buttonType="principal"
+          href="/ouvidoria"
         />
         <HomeCard
           isClickable={false}
@@ -36,6 +37,7 @@ function Home() {
           text="Veja o que podemos fazer por você, cidadão!"
           buttonTitle="CONSULTAR SERVIÇOS"
           buttonType="principal"
+          href="/services"
         />
         <HomeCard
           isClickable={true}

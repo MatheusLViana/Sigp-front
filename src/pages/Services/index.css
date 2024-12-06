@@ -1,0 +1,14 @@
+.services-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.container-32{
+    width: 32%;
+}
+
+.container-64{
+    width: 64%;
+}

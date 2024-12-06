@@ -3,7 +3,7 @@ import { BoxArrowInUpRight } from 'react-bootstrap-icons';
 
 function Button(props){
   return(
-    <a className={`btn-${props.buttonType}`} href={props.href}>
+    <a className={`btn btn-${props.buttonType}`} href={props.href}>
         {props.icon &&
           (props.icon === 'BoxArrowInUpRight' ? (<BoxArrowInUpRight size={24} className='btn-icon'/>):
           (<div>chiclete</div>))

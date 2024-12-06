@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import NewPassword from './pages/NewPassword';
 import Register from './pages/Register';
+import Services from './pages/Services';
+import Ouvidoria from './pages/Ouvidoria';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/new-password' element={<NewPassword />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/services' element={<Services />} />
+          <Route path='/ouvidoria' element={<Ouvidoria />} />
         </Routes>
       </div>
     </BrowserRouter>
