@@ -2,10 +2,12 @@
 import { useEffect, useState } from 'react';
 import Newscard from './Newscard';
 import './NewsCarousel.css'
+import api from '../services/api';
 
 function NewsCarousel(){
 
-  const [newsCards, setNewsCards] = useState([
+  const [newsCards, setNewsCards] = useState([]);
+  /*
     {
       id:0,
       imageurl:'https://diariodocomercio.com.br/wp-content/uploads/2020/01/deficit-dinheiro-30-10-2.jpg',
@@ -62,8 +64,7 @@ function NewsCarousel(){
       title:'Nova campanha sobre violência no trânsito',
       resume:'O novo projeto de concientização da Secretaria de Segurança Pública foca no trânsito e vai começar pela divulgação de material impresso nas entradas da cidade.',
     }
-    
-  ]);
+  */
   const [carrouselList, setCarrouselList] = useState([]);
   const [carrouselSegments, setCarrouselSegments] = useState([]);
 
@@ -107,6 +108,21 @@ function NewsCarousel(){
       setCarrouselSegments(segments);
     }
   },[newsCards])
+
+  useEffect(()=>{
+    const handleNews = async () => {
+      try{
+        const response = await api.get('/api/home');
+        const news = response.data["noticias"];
+        setNewsCards(JSON.stringify(news));
+        console.log(JSON.stringify(news));
+      }catch(error){
+        console.log(error)
+        console.log("resposta")
+      }
+    }
+    handleNews();
+  },[])
 
   return(
     <div className='carousel-container'>
