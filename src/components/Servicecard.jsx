@@ -1,27 +1,22 @@
-import './Servicecard.css';
-import { Clipboard2Check } from 'react-bootstrap-icons';
-import Button from './Button';
+import "./Servicecard.css";
+import { Clipboard2Check } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
-function Servicecard(props) {
+function Servicecard({ category, title, href }) {
   return (
-    <div className="blue-card">
-      <div className="intern-container">
-        <div className="row">
-          <Clipboard2Check size={48} />
-          <div className="category-container">
-            <h3>{props.category}</h3>
+    <Link to={href} className="service-card-link">
+      <div className="blue-card">
+        <div className="intern-container">
+          <div className="row">
+            <Clipboard2Check size={48} />
+            <div className="category-container">
+              <h3>{category}</h3>
+            </div>
           </div>
-        </div>
-        <h2 className="service-card-title">{props.title}</h2>
-        <div className="w60">
-          <Button
-            title="VER SERVIÇO"
-            href={props.href}
-            buttonType="principal"
-          />
+          <h2 className="service-card-title">{title}</h2>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
