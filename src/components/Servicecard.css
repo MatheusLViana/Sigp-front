@@ -1,46 +1,51 @@
-.row{
+.row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
-.category-container{
+.category-container {
     background-color: #fff;
     border-radius: 12px;
     color: #0F62FE;
-    width: 120px;
-}
-
-.category-container h3{
-    font-family: "Pontano Sans", sans-serif;
+    padding: 5px 10px;
     font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.service-card-title{
+.service-card-title {
     font-family: "Freeman", sans-serif;
-    font-size: 36px;
-    font-weight: 400;
+    font-size: 20px; /* Ajusta tamanho para melhor legibilidade */
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+    line-height: 1.4; /* Ajusta espaçamento entre linhas */
 }
 
-.service-card-description{
+.service-card-description {
     font-family: "Pontano Sans", sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
-    height: 90px;
-    text-align: start;
+    text-align: center;
+    margin: 10px 0;
 }
 
-.services-card-details{
+.services-card-details {
     font-family: "Pontano Sans", sans-serif;
     font-size: 12px;
-    text-align: start;
+    text-align: center;
+    margin-top: auto;
 }
 
-.white{
+.white {
     color: #fff;
 }
 
-.w60{
-    width: 60%;
-
+.w60 {
+    width: 100%; /* Ajusta largura do botão */
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }

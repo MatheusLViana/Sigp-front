@@ -129,4 +129,18 @@
     height: auto;
     transition: all 0.4s ease;
   }
+  .logout-btn {
+    background-color: transparent; /* Sem cor de fundo */
+    border: none; /* Remove a borda do botão */
+    color: #004765; /* Cor do texto, igual ao "ENTRAR" */
+    font-family: "Freeman", sans-serif;
+    font-size: 20px;
+    cursor: pointer; /* Garantir o cursor de link */
+    text-decoration: none; /* Remove sublinhado */
+  }
+  
+  .logout-btn:hover {
+    color: #007bff; /* Cor ao passar o mouse */
+  }
+  
 }

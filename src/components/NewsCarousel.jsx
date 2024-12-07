@@ -1,11 +1,9 @@
-
 import { useEffect, useState } from 'react';
 import Newscard from './Newscard';
-import './NewsCarousel.css'
+import './NewsCarousel.css';
 import api from '../services/api';
 
-function NewsCarousel(){
-
+function NewsCarousel() {
   const [newsCards, setNewsCards] = useState([]);
   /*
     {
@@ -68,103 +66,104 @@ function NewsCarousel(){
   const [carrouselList, setCarrouselList] = useState([]);
   const [carrouselSegments, setCarrouselSegments] = useState([]);
 
-  function handleSegmentChange(segmentID){
+  function handleSegmentChange(segmentID) {
     const initialList = carrouselSegments.map((segment) =>
-      segment.id !== segmentID ? { ...segment, value: 0 } : segment
+      segment.id !== segmentID ? { ...segment, value: 0 } : segment,
     );
     const updatedList = initialList.map((segment) =>
-      segment.id === segmentID ? { ...segment, value: 1 } : segment
+      segment.id === segmentID ? { ...segment, value: 1 } : segment,
     );
     setCarrouselSegments(updatedList);
-    window.location.href = '#section'+segmentID;
+    window.location.href = '#section' + segmentID;
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     const elementsPerSection = 3;
-    const flags = Math.ceil(newsCards.length/elementsPerSection);
+    const flags = Math.ceil(newsCards.length / elementsPerSection);
     let mainList = [];
-    for(let a=0, i=0; a<flags; a++){
+    for (let a = 0, i = 0; a < flags; a++) {
       let subList = [];
-      for(let b=0; b<elementsPerSection && i<newsCards.length; b++, i++){
+      for (
+        let b = 0;
+        b < elementsPerSection && i < newsCards.length;
+        b++, i++
+      ) {
         subList.push(newsCards[i]);
       }
       const e = {
         id: a,
-        item: subList 
-      }
+        item: subList,
+      };
       mainList.push(e);
     }
     setCarrouselList(mainList);
 
-    if(flags>1){
+    if (flags > 1) {
       let segments = [];
-      for(let i=0; i<flags; i++){
+      for (let i = 0; i < flags; i++) {
         const s = {
           id: i,
-          value: (i===0 ? true : false)
-        }
+          value: i === 0 ? true : false,
+        };
         segments.push(s);
       }
       setCarrouselSegments(segments);
     }
-  },[newsCards])
+  }, [newsCards]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const handleNews = async () => {
-      try{
+      try {
         const response = await api.get('/api/home');
-        const news = response.data["noticias"];
+        const news = response.data['noticias'];
         setNewsCards(JSON.stringify(news));
         console.log(JSON.stringify(news));
-      }catch(error){
-        console.log(error)
-        console.log("resposta")
+      } catch (error) {
+        console.log(error);
+        console.log('resposta');
       }
-    }
+    };
     handleNews();
-  },[])
+  }, []);
 
-  return(
-    <div className='carousel-container'>
-      <ul className='carrousel-list'>
-        {
-          carrouselList.map(list => {
-            return(
-              <li className='group-list' key={list.id} id={`section${list.id}`}>
-                <ul className='content-list'>
-                  {
-                    list.item.map(card => {
-                      return(
-                        <li className='card-item' key={card.id}>
-                          <Newscard
-                            imageurl= {card.imageurl}
-                            category= {card.category}
-                            title= {card.title}
-                            resume= {card.resume}
-                          />
-                        </li>
-                      )
-                    })
-                  }
-                </ul>
-              </li>
-            )
-          })
-        }
+  return (
+    <div className="carousel-container">
+      <ul className="carrousel-list">
+        {carrouselList.map((list) => {
+          return (
+            <li className="group-list" key={list.id} id={`section${list.id}`}>
+              <ul className="content-list">
+                {list.item.map((card) => {
+                  return (
+                    <li className="card-item" key={card.id}>
+                      <Newscard
+                        imageurl={card.imageurl}
+                        category={card.category}
+                        title={card.title}
+                        resume={card.resume}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          );
+        })}
       </ul>
-      <ul className='carousel-flags'>
-        {
-          carrouselSegments.map(segment => {
-            return(
-              <li key={segment.id}>
-                <div className={segment.value ? 'dot-flag active' : 'dot-flag'} onClick={()=>handleSegmentChange(segment.id)}/>
-              </li>
-            )
-          })
-        }
+      <ul className="carousel-flags">
+        {carrouselSegments.map((segment) => {
+          return (
+            <li key={segment.id}>
+              <div
+                className={segment.value ? 'dot-flag active' : 'dot-flag'}
+                onClick={() => handleSegmentChange(segment.id)}
+              />
+            </li>
+          );
+        })}
       </ul>
     </div>
-  )
+  );
 }
 
-export default NewsCarousel
+export default NewsCarousel;

@@ -12,16 +12,17 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <header className='App-header'>
+        <header className="App-header">
           <Navbar />
         </header>
         <Routes>
-          <Route path='/' exact={true} element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/new-password' element={<NewPassword />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/services' element={<Services />} />
-          <Route path='/ouvidoria' element={<Ouvidoria />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" exact={true} element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/new-password" element={<NewPassword />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/ouvidoria" element={<Ouvidoria />} />
         </Routes>
       </div>
     </BrowserRouter>

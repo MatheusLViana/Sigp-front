@@ -1,73 +1,116 @@
-.services-container{
+.services-container {
     margin-top: 40px;
     max-width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap; /* Permite quebra de linha para evitar estouro */
+    gap: 20px; /* Espaçamento entre os elementos */
     color: #fff;
 }
 
-.container-32{
-    width: 32%;
+.container-32 {
+    flex: 1 1 calc(32% - 20px); /* Define largura flexível com base no espaço disponível */
+    min-width: 300px; /* Define um limite mínimo para evitar elementos muito pequenos */
     height: fit-content;
     margin: 0;
 }
 
-.container-64{
-    width: 68%;
+.container-64 {
+    flex: 2 1 calc(68% - 20px); /* Define largura flexível com base no espaço disponível */
+    min-width: 600px; /* Define um limite mínimo para evitar elementos muito pequenos */
     margin: 0;
 }
 
-.services-list{
+.services-list {
     list-style-type: none;
     margin: 0;
+    padding: 0; /* Remove padding para alinhar melhor */
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 40px;
+    flex-wrap: wrap; /* Permite quebra de linha */
+    gap: 20px; /* Reduz o espaçamento entre os itens */
+    justify-content: start; /* Alinha itens à esquerda */
 }
 
-.service-item{
-    max-width: 50%;
+.service-item {
+    flex: 1 1 calc(33.33% - 20px); /* Ajusta para caber 3 itens por linha */
+    max-width: calc(33.33% - 20px);
+    height: 250px; /* Define altura para uniformidade */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    background-color: #0078D4;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 15px; /* Adiciona padding interno */
+    box-sizing: border-box; /* Inclui padding e border no tamanho total */
 }
 
-.service-search-txt{
-    font-family: "Freeman", sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    text-align: start;
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.services-filter-txt{
-    font-family: "Pontano Sans", sans-serif;
-    font-size: 24px;
-    font-weight: 300;
+.service-item h3 {
+    font-size: 18px; /* Aumenta tamanho da fonte */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.service-item .category {
+    font-size: 16px; /* Ajusta tamanho da tag */
+    font-weight: bold;
     color: #004765;
-    text-align: start;
-    margin-bottom: 0;
+    text-transform: uppercase;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 8px;
 }
 
 @media screen and (max-width: 960px) {
-    .services-container{
-        flex-direction: column;
+    .services-container {
+        flex-direction: column; /* Alinha os elementos em coluna */
     }
 
-    .container-32{
-        min-width: 100%;
-    }
-    
-    .container-64{
-        min-width: 100%;
-        padding: 0;
+    .container-32,
+    .container-64 {
+        width: 100%; /* Faz os containers ocuparem toda a largura */
+        min-width: unset; /* Remove o limite mínimo para mobile */
     }
 
-    .services-list{
-        flex-direction: column;
-        padding-top: 40px;
-        padding-left: 0;
+    .services-list {
+        flex-direction: column; /* Alinha os itens verticalmente */
+        gap: 20px; /* Reduz o espaçamento entre os itens */
+        padding-top: 20px;
     }
 
-    .service-item{
-        max-width: 100%;
+    .service-item {
+        flex: 1 1 100%; /* Faz os itens ocuparem toda a largura disponível */
+        height: auto; /* Ajusta altura dinamicamente no mobile */
     }
+    .categories-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-item {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  background-color: #f6f6f6;
+  border-radius: 8px;
+  color: #004765;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.category-item:hover,
+.category-item.active {
+  background-color: #0078d4;
+  color: #ffffff;
+}
+
 }
