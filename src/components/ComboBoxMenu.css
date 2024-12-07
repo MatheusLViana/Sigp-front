@@ -1,0 +1,11 @@
+.intern-container-combo{
+    padding: 4px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.combo-margin{
+    margin: 24px 0px;
+}

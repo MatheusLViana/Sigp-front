@@ -3,7 +3,7 @@ import './SearchInput.css'
 
 function SearchInput(props){
   return(
-    <form className='input-container'>
+    <form className={props.boxShadows ? 'input-container box-shadows':'input-container'}>
       <div className="input-logo">
         <Search color='#888888'/>
       </div>

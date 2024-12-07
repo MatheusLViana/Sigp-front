@@ -1,0 +1,46 @@
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.category-container{
+    background-color: #fff;
+    border-radius: 12px;
+    color: #0F62FE;
+    width: 120px;
+}
+
+.category-container h3{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 16px;
+}
+
+.service-card-title{
+    font-family: "Freeman", sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.service-card-description{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    height: 90px;
+    text-align: start;
+}
+
+.services-card-details{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 12px;
+    text-align: start;
+}
+
+.white{
+    color: #fff;
+}
+
+.w60{
+    width: 60%;
+
+}

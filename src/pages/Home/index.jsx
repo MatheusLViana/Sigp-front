@@ -9,6 +9,7 @@ function Home() {
       <SearchInput
         name='main-input'
         placeholder='O que você procura no momento? Ex: consulta de IPVA, dados da saúde, etc'
+        boxShadows={true}
       />
       <br />
       <NewsCarousel />

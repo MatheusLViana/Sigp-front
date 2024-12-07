@@ -8,6 +8,9 @@
     align-items: center;
     justify-content: baseline;
     overflow: hidden;
+}
+
+.box-shadows{
     box-shadow: 5px 10px 18px #AAAAAA;
 }
 
