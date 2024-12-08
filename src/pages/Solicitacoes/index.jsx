@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
+import SolicitacaoCard from "../../components/SolicitacaoCard";
 import "./index.css";
 
 function Solicitacoes() {
@@ -12,7 +13,7 @@ function Solicitacoes() {
       try {
         const response = await api.get("/solicitacoes/");
         if (response.status === 200) {
-          setSolicitacoes(response.data);
+          setSolicitacoes(response.data.results); // Pega a lista de solicitações do backend
         } else {
           throw new Error("Erro ao buscar solicitações.");
         }
@@ -39,37 +40,17 @@ function Solicitacoes() {
         <ul className="solicitacoes-list">
           {solicitacoes.map((solicitacao) => (
             <li key={solicitacao.id} className="solicitacao-item">
-              <h2 className="solicitacao-title">{solicitacao.servico_nome}</h2>
-              <p className="solicitacao-status">
-                <strong>Status:</strong> {solicitacao.status}
-              </p>
-              <p className="solicitacao-data">
-                <strong>Data da Solicitação:</strong>{" "}
-                {new Date(solicitacao.data_solicitacao).toLocaleDateString()}
-              </p>
-              <p className="solicitacao-comentario">
-                <strong>Comentário do Servidor:</strong>{" "}
-                {solicitacao.comentario_servidor ||
-                  "Sem comentários do servidor."}
-              </p>
-              <ul className="etapas-list">
-                {solicitacao.etapas.map((etapa) => (
-                  <li
-                    key={etapa.id}
-                    className={`etapa-item ${
-                      etapa.concluida ? "etapa-concluida" : "etapa-pendente"
-                    }`}
-                  >
-                    {etapa.ordem}. {etapa.nome_etapa}{" "}
-                    {etapa.concluida ? "✅" : "⏳"}
-                  </li>
-                ))}
-              </ul>
+              <SolicitacaoCard
+                servico={solicitacao.servico} // Nome do serviço
+                status={solicitacao.status} // Status
+                etapasConcluidas={solicitacao.etapas_concluidas} // Etapas concluídas
+                totalEtapas={solicitacao.total_etapas} // Total de etapas
+              />
             </li>
           ))}
         </ul>
       ) : (
-        <p className="no-solicitacoes">Nenhuma solicitação encontrada.</p>
+        <p>Nenhuma solicitação encontrada.</p>
       )}
     </div>
   );
