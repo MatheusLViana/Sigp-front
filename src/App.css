@@ -105,6 +105,42 @@
 }
 
 footer{
-  height: 120px;
+  min-height: 130px;
   background-color: #0085BE;
+}
+
+.intern-footer-div{
+  padding: 20px 20px 0px 20px;
+  gap: 4px;
+}
+
+.subdiv-row{
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+
+.subdiv-column{
+  font-family: "Pontano Sans", sans-serif;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.subdiv-column a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.subdiv-footer a:hover{
+  text-decoration: underline;
+}
+
+.version-txt{
+  color:#fff;
+  text-align: end;
+  font-family: "Pontano Sans", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
 }

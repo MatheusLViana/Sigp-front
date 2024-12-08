@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../components/AuthContext";
-import { List } from "react-bootstrap-icons";
+import { BoxArrowLeft, List } from "react-bootstrap-icons";
 import logo from "../assets/LogoSIGP.png";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
@@ -44,10 +44,10 @@ function Navbar() {
           {user ? (
             <>
               <span className="navbar-greeting">
-                Olá, {user.nome_completo.split(" ")[0]}
+                Olá, {user.nome_completo.split(" ")[0]}!
               </span>
-              <button className="login-btn logout-btn" onClick={handleLogout}>
-                SAIR
+              <button className="logout-btn" onClick={handleLogout}>
+                <BoxArrowLeft size={32}/><span>SAIR</span>
               </button>
             </>
           ) : (
@@ -66,6 +66,11 @@ function Navbar() {
         </div>
       </div>
       <ul className={click ? "mobile-menu-list active" : "mobile-menu-list"}>
+        {user && (
+          <span className="navbar-greeting">
+            Olá, {user.nome_completo.split(" ")[0]}!
+          </span>
+        )}
         <li>
           <a className="navbar-thin-link" href="/services">
             Serviços
@@ -90,11 +95,8 @@ function Navbar() {
         )}
         {user ? (
           <li>
-            <span className="navbar-greeting">
-              Olá, {user.nome_completo.split(" ")[0]}
-            </span>
-            <button className="login-btn logout-btn" onClick={handleLogout}>
-              SAIR
+            <button className="logout-btn" onClick={handleLogout}>
+              <BoxArrowLeft size={32}/><span>SAIR</span>
             </button>
           </li>
         ) : (

@@ -35,7 +35,22 @@ function App() {
           <Route path="/solicitacoes/:id" element={<SolicitacaoDetalhes />} />
         </Routes>
       </div>
-      <footer></footer>
+      <footer>
+        <div className="intern-footer-div">
+          <div className="subdiv-row">
+            <div className="subdiv-column">
+              <a href='#'>SECRETARIAS</a>
+              <a href='#'>OUVIDORIA</a>
+              <a href='#'>TRANSPARÊNCIA</a>
+            </div>
+            <div className="subdiv-column">
+              <a href='#'>ÁREA DA IMPRENSA</a>
+              <a href='#'>CONTATOS ÚTEIS</a>
+            </div>
+          </div>
+          <p className="version-txt">UniCidade 2024 V1.0</p>
+        </div>
+      </footer>
     </BrowserRouter>
   );
 }

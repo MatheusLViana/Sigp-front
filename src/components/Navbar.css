@@ -88,6 +88,26 @@
   list-style: none;
 }
 
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+  margin: 0 auto;
+  color: #004765;
+  border-radius: 4px;
+  font-family: "Freeman", sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.logout-btn:hover {
+  color: #007bff;
+}
+
 @media screen and (max-width: 960px) {
   .login-container {
     display: none;
@@ -128,18 +148,5 @@
   .navbar.active {
     height: auto;
     transition: all 0.4s ease;
-  }
-  .logout-btn {
-    background-color: transparent; /* Sem cor de fundo */
-    border: none; /* Remove a borda do botão */
-    color: #004765; /* Cor do texto, igual ao "ENTRAR" */
-    font-family: "Freeman", sans-serif;
-    font-size: 20px;
-    cursor: pointer; /* Garantir o cursor de link */
-    text-decoration: none; /* Remove sublinhado */
-  }
-
-  .logout-btn:hover {
-    color: #007bff; /* Cor ao passar o mouse */
   }
 }
