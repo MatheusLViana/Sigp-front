@@ -45,6 +45,11 @@ function Navbar() {
           <a className="navbar-thin-link" href="/indicadores">
             Indicadores
           </a>
+          {isAuthenticated && ( // Exibe "Solicitações" apenas se autenticado
+            <a className="navbar-thin-link" href="/solicitacoes">
+              Solicitações
+            </a>
+          )}
         </div>
         <div className="login-container">
           {isAuthenticated ? (
@@ -82,6 +87,13 @@ function Navbar() {
             Indicadores
           </a>
         </li>
+        {isAuthenticated && ( // Exibe "Solicitações" apenas se autenticado
+          <li>
+            <a className="navbar-thin-link" href="/solicitacoes">
+              Solicitações
+            </a>
+          </li>
+        )}
         {isAuthenticated ? (
           <li>
             <button className="login-btn logout-btn" onClick={handleLogout}>
