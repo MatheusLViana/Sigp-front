@@ -24,7 +24,7 @@
 }
 
 .navbar-logo {
-  height: 60%;
+  height: 11vmin;
   pointer-events: none;
 }
 
@@ -68,7 +68,7 @@
 .register-btn {
   font-family: "Freeman", sans-serif;
   text-decoration: none;
-  background-color: #00A444;
+  background-color: #00a444;
   color: #fff;
   font-size: 17px;
   border-radius: 16px;
@@ -84,7 +84,7 @@
   padding: 0;
 }
 
-.mobile-menu-list li{
+.mobile-menu-list li {
   list-style: none;
 }
 
@@ -138,9 +138,8 @@
     cursor: pointer; /* Garantir o cursor de link */
     text-decoration: none; /* Remove sublinhado */
   }
-  
+
   .logout-btn:hover {
     color: #007bff; /* Cor ao passar o mouse */
   }
-  
 }
