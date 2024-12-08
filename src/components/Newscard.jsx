@@ -1,3 +1,4 @@
+import defaultBG from "../assets/newspaper.jpg";
 import './Newscard.css'
 
 function Newscard(props){
@@ -5,12 +6,14 @@ function Newscard(props){
     <div className='newscard-container' onClick={props.link}>
       <div
         className='image-container'
-        style={props.imageurl===null ? {backgroundImage: 'url(../assets/newspaper.jpg)'}:{backgroundImage: 'url(' + props.imageurl + ')'}}
+        style={props.imageurl===null ? {backgroundImage: 'url(' + defaultBG + ')'}:{backgroundImage: 'url(' + props.imageurl + ')'}}
       >
       </div>
-      <p className='news-category'>{props.category}</p>
-      <h3 className='news-title'>{props.title}</h3>
-      <p className='news-resume'>{props.resume}</p>
+      <div className='news-txt-block'>
+        <p className='news-category'>{props.category}</p>
+        <h3 className='news-title'>{props.title}</h3>
+        <p className='news-resume'>{props.resume}</p>
+      </div>
       <p className='news-plus'>+Saiba Mais</p>
     </div>
   )

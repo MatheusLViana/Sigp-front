@@ -33,7 +33,7 @@ function Navbar() {
       <div className="navbar-container">
         <a className="logo-container" href="/home">
           <img src={logo} className="navbar-logo" alt="logo" />
-          <p className="navbar-logo-txt">Sistema Integrado de Gestão Pública</p>
+          <p className="navbar-logo-txt">UniCidade</p>
         </a>
         <div className="links-container">
           <a className="navbar-thin-link" href="/services">

@@ -27,6 +27,9 @@ function App() {
           <Route path="/ouvidoria" element={<Ouvidoria />} />
         </Routes>
       </div>
+      <footer>
+        
+      </footer>
     </BrowserRouter>
   );
 }
