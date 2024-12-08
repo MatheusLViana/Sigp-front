@@ -1,0 +1,72 @@
+.detalhes-solicitacao-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #004765;
+}
+
+.detalhes-header {
+  border-bottom: 2px solid #0078d4;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.detalhes-header h1 {
+  font-size: 24px;
+  color: #0078d4;
+  margin-bottom: 10px;
+}
+
+.detalhes-header p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.detalhes-body h3 {
+  font-size: 20px;
+  color: #0078d4;
+  margin-bottom: 10px;
+}
+
+.etapas-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.etapa-item {
+  background-color: #e3f2fd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.etapa-item strong {
+  font-size: 16px;
+  color: #004765;
+}
+
+.etapa-item.etapa-concluida {
+  background-color: #d4edda;
+}
+
+.etapa-item.etapa-pendente {
+  background-color: #f8d7da;
+}
+
+.etapa-item span {
+  font-size: 20px;
+}
+
+.detalhes-body p {
+  font-size: 16px;
+  margin-top: 20px;
+  color: #004765;
+}

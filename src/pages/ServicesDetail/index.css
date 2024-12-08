@@ -137,6 +137,37 @@
   color: #004765;
 }
 
+.solicitacao-existente-btn {
+  background-color: #0078d4;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.solicitacao-existente-btn:hover {
+  background-color: #0056a3;
+}
+
+.solicitar-servico-btn {
+  background-color: #00a444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.solicitar-servico-btn:hover {
+  background-color: #007030;
+}
+
 @media screen and (max-width: 960px) {
   .related-services ul {
     flex-direction: column;

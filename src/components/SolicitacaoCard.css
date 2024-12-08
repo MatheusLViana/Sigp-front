@@ -65,3 +65,12 @@
   color: #004765;
   text-align: right;
 }
+
+.link-wrapper {
+  text-decoration: none; /* Remove o sublinhado padrão do link */
+  color: inherit; /* Mantém as cores originais do card */
+}
+
+.link-wrapper:hover {
+  opacity: 0.9; /* Adiciona um efeito de hover */
+}

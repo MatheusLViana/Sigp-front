@@ -1,20 +1,30 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import api from "../../services/api";
 import "./index.css";
 
 function ServiceDetails() {
   const { id } = useParams(); // Captura o ID do serviço a partir da URL
   const [service, setService] = useState(null);
+  const [solicitacao, setSolicitacao] = useState(null); // Estado para armazenar a solicitação do serviço
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [solicitacaoStatus, setSolicitacaoStatus] = useState(""); // Para feedback de solicitação
 
   useEffect(() => {
     const fetchServiceDetails = async () => {
       try {
-        const response = await api.get(`/services/${id}`);
-        setService(response.data);
+        const [serviceResponse, solicitacaoResponse] = await Promise.all([
+          api.get(`/services/${id}`),
+          api.get("/solicitacoes/"), // Busca todas as solicitações
+        ]);
+
+        setService(serviceResponse.data);
+
+        // Verifica se já há uma solicitação para o serviço
+        const solicitacaoExistente = solicitacaoResponse.data.results.find(
+          (solicitacao) => solicitacao.servico === serviceResponse.data.nome
+        );
+        setSolicitacao(solicitacaoExistente || null);
       } catch (err) {
         setError(
           "Erro ao carregar os detalhes do serviço. Tente novamente mais tarde."
@@ -27,21 +37,6 @@ function ServiceDetails() {
 
     fetchServiceDetails();
   }, [id]);
-
-  const handleSolicitarServico = async () => {
-    try {
-      const response = await api.post("/solicitacoes/", { id_servico: id });
-      if (response.status === 201) {
-        setSolicitacaoStatus("Solicitação criada com sucesso!");
-      } else {
-        throw new Error("Erro ao criar solicitação.");
-      }
-    } catch (err) {
-      setSolicitacaoStatus(
-        err.response?.data?.detail || "Erro ao solicitar serviço."
-      );
-    }
-  };
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p className="error-message">{error}</p>;
@@ -66,19 +61,32 @@ function ServiceDetails() {
           ))}
         </ul>
       </div>
-      <button className="solicitar-btn" onClick={handleSolicitarServico}>
-        Solicitar Serviço
-      </button>
-      {solicitacaoStatus && <p className="feedback">{solicitacaoStatus}</p>}
-      <div className="related-services">
-        <h3>Serviços Relacionados</h3>
-        <ul>
-          {service.servicos_relacionados.map((relacionado) => (
-            <li key={relacionado.id}>
-              <a href={`/services/${relacionado.id}`}>{relacionado.nome}</a>
-            </li>
-          ))}
-        </ul>
+      <div className="service-actions">
+        {solicitacao ? (
+          <Link
+            to={`/solicitacoes/${solicitacao.id}`}
+            className="solicitacao-existente-btn"
+          >
+            Acompanhar Solicitação
+          </Link>
+        ) : (
+          <button
+            onClick={async () => {
+              try {
+                const response = await api.post("/solicitacoes/", {
+                  id_servico: id,
+                });
+                alert("Solicitação criada com sucesso!");
+                setSolicitacao(response.data); // Atualiza a solicitação para mostrar o link
+              } catch (err) {
+                alert("Erro ao solicitar o serviço. Tente novamente.");
+              }
+            }}
+            className="solicitar-servico-btn"
+          >
+            Solicitar Serviço
+          </button>
+        )}
       </div>
     </div>
   );

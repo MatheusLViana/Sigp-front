@@ -35,3 +35,11 @@
 .etapa-pendente {
   color: red;
 }
+.solicitacao-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.solicitacao-item a:hover {
+  opacity: 0.9;
+}

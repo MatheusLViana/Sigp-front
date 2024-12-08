@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Importar o Link do React Router
 import api from "../../services/api";
 import SolicitacaoCard from "../../components/SolicitacaoCard";
 import "./index.css";
@@ -40,12 +41,17 @@ function Solicitacoes() {
         <ul className="solicitacoes-list">
           {solicitacoes.map((solicitacao) => (
             <li key={solicitacao.id} className="solicitacao-item">
-              <SolicitacaoCard
-                servico={solicitacao.servico} // Nome do serviço
-                status={solicitacao.status} // Status
-                etapasConcluidas={solicitacao.etapas_concluidas} // Etapas concluídas
-                totalEtapas={solicitacao.total_etapas} // Total de etapas
-              />
+              <Link
+                to={`/solicitacoes/${solicitacao.id}`}
+                className="link-wrapper"
+              >
+                <SolicitacaoCard
+                  servico={solicitacao.servico} // Nome do serviço
+                  status={solicitacao.status} // Status
+                  etapasConcluidas={solicitacao.etapas_concluidas} // Etapas concluídas
+                  totalEtapas={solicitacao.total_etapas} // Total de etapas
+                />
+              </Link>
             </li>
           ))}
         </ul>

@@ -11,6 +11,7 @@ import Noticias from "./pages/Noticias";
 import NoticiaDetalhada from "./pages/NoticiasDetail";
 import Indicadores from "./pages/Indicadores";
 import Solicitações from "./pages/Solicitacoes";
+import SolicitacaoDetalhes from "./pages/SolicitacoesDetail";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/noticias/:id" element={<NoticiaDetalhada />} />
           <Route path="/indicadores" element={<Indicadores />} />
           <Route path="/solicitacoes" element={<Solicitações />} />
+          <Route path="/solicitacoes/:id" element={<SolicitacaoDetalhes />} />
         </Routes>
       </div>
       <footer></footer>
