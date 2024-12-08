@@ -9,6 +9,7 @@ import Services from "./pages/Services";
 import ServiceDetails from "./pages/ServicesDetail";
 import Noticias from "./pages/Noticias";
 import NoticiaDetalhada from "./pages/NoticiasDetail";
+import Indicadores from "./pages/Indicadores";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/services/:id" element={<ServiceDetails />} />
           <Route path="/noticias" element={<Noticias />} />
           <Route path="/noticias/:id" element={<NoticiaDetalhada />} />
+          <Route path="/indicadores" element={<Indicadores />} />
         </Routes>
       </div>
     </BrowserRouter>

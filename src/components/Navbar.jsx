@@ -42,8 +42,8 @@ function Navbar() {
           <a className="navbar-thin-link" href="/Noticias">
             Noticias
           </a>
-          <a className="navbar-thin-link" href="/status">
-            Status de Serviços
+          <a className="navbar-thin-link" href="/indicadores">
+            Indicadores
           </a>
         </div>
         <div className="login-container">
@@ -78,8 +78,8 @@ function Navbar() {
           </a>
         </li>
         <li>
-          <a className="navbar-thin-link" href="/status">
-            Status de Serviços
+          <a className="navbar-thin-link" href="/indicadores">
+            Indicadores
           </a>
         </li>
         {isAuthenticated ? (

@@ -1,0 +1,23 @@
+.indicadores-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ocupa a tela toda */
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.indicadores-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.indicadores-image {
+  max-width: 80%;
+  height: auto;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
