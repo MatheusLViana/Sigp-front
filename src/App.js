@@ -10,6 +10,7 @@ import ServiceDetails from "./pages/ServicesDetail";
 import Noticias from "./pages/Noticias";
 import NoticiaDetalhada from "./pages/NoticiasDetail";
 import Indicadores from "./pages/Indicadores";
+import Solicitações from "./pages/Solicitacoes";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/noticias" element={<Noticias />} />
           <Route path="/noticias/:id" element={<NoticiaDetalhada />} />
           <Route path="/indicadores" element={<Indicadores />} />
+          <Route path="/solicitacoes" element={<Solicitações />} />
         </Routes>
       </div>
     </BrowserRouter>
