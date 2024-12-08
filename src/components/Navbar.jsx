@@ -1,32 +1,21 @@
+import React, { useState } from "react";
+import { useAuth } from "../components/AuthContext";
 import { List } from "react-bootstrap-icons";
 import logo from "../assets/LogoSIGP.png";
 import "./Navbar.css";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const { user, logout } = useAuth();
   const [click, setClick] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
-  // Verifica se o token existe ao carregar o componente
-  useEffect(() => {
-    const token = localStorage.getItem("access_token");
-    setIsAuthenticated(!!token); // Define se o usuário está autenticado
-  }, []);
+  const handleClick = () => setClick(!click);
 
   const handleLogout = () => {
-    // Remove tokens do armazenamento
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    localStorage.removeItem("perfil");
-    localStorage.removeItem("id_usuario");
-
-    setIsAuthenticated(false); // Atualiza o estado de autenticação
-    navigate("/home"); // Redireciona explicitamente para a página Home
+    logout();
+    navigate("/home");
   };
-
-  const handleClick = () => setClick(!click);
 
   return (
     <div className={click ? "navbar active" : "navbar"}>
@@ -40,22 +29,27 @@ function Navbar() {
             Serviços
           </a>
           <a className="navbar-thin-link" href="/Noticias">
-            Noticias
+            Notícias
           </a>
           <a className="navbar-thin-link" href="/indicadores">
             Indicadores
           </a>
-          {isAuthenticated && ( // Exibe "Solicitações" apenas se autenticado
+          {user && (
             <a className="navbar-thin-link" href="/solicitacoes">
               Solicitações
             </a>
           )}
         </div>
         <div className="login-container">
-          {isAuthenticated ? (
-            <button className="login-btn logout-btn" onClick={handleLogout}>
-              SAIR
-            </button>
+          {user ? (
+            <>
+              <span className="navbar-greeting">
+                Olá, {user.nome_completo.split(" ")[0]}
+              </span>
+              <button className="login-btn logout-btn" onClick={handleLogout}>
+                SAIR
+              </button>
+            </>
           ) : (
             <>
               <a className="login-btn" href="/login">
@@ -79,7 +73,7 @@ function Navbar() {
         </li>
         <li>
           <a className="navbar-thin-link" href="/Noticias">
-            Noticias
+            Notícias
           </a>
         </li>
         <li>
@@ -87,15 +81,18 @@ function Navbar() {
             Indicadores
           </a>
         </li>
-        {isAuthenticated && ( // Exibe "Solicitações" apenas se autenticado
+        {user && (
           <li>
             <a className="navbar-thin-link" href="/solicitacoes">
               Solicitações
             </a>
           </li>
         )}
-        {isAuthenticated ? (
+        {user ? (
           <li>
+            <span className="navbar-greeting">
+              Olá, {user.nome_completo.split(" ")[0]}
+            </span>
             <button className="login-btn logout-btn" onClick={handleLogout}>
               SAIR
             </button>

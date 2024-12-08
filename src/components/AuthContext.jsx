@@ -1,35 +1,45 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import api from "../services/api";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
 
   const login = async (email, password) => {
     try {
       const response = await api.post("/login/", { email, password });
-      const { access_token, refresh_token } = response.data;
+      const { access_token, refresh_token, nome_completo } = response.data;
 
-      // Armazena os tokens no localStorage
+      // Armazena os tokens e informações do usuário no localStorage
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("refresh_token", refresh_token);
+      localStorage.setItem("nome_completo", nome_completo);
 
-      setIsAuthenticated(true);
+      setUser({ nome_completo, email });
     } catch (error) {
-      throw error; // Propaga o erro para ser tratado no componente Login
+      throw error;
     }
   };
 
   const logout = () => {
-    // Remove os tokens e atualiza o estado de autenticação
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
-    setIsAuthenticated(false);
+    localStorage.removeItem("nome_completo");
+    setUser(null);
   };
 
+  useEffect(() => {
+    const accessToken = localStorage.getItem("access_token");
+    const nomeCompleto = localStorage.getItem("nome_completo");
+
+    if (accessToken && nomeCompleto) {
+      setUser({ nome_completo: nomeCompleto });
+    }
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
