@@ -1,14 +1,14 @@
-import NewsCarousel from '../../components/NewsCarousel';
-import HomeCard from '../../components/HomeCard';
-import SearchInput from '../../components/SearchInput';
-import './index.css';
+import NewsCarousel from "../../components/NewsCarousel";
+import HomeCard from "../../components/HomeCard";
+import SearchInput from "../../components/SearchInput";
+import "./index.css";
 
 function Home() {
   return (
     <>
       <SearchInput
-        name='main-input'
-        placeholder='O que você procura no momento? Ex: consulta de IPVA, dados da saúde, etc'
+        name="main-input"
+        placeholder="O que você procura no momento? Ex: consulta de IPVA, dados da saúde, etc"
         boxShadows={true}
       />
       <br />
@@ -17,11 +17,11 @@ function Home() {
         <HomeCard
           isClickable={false}
           cardStyle="principal"
-          category="OUVIDORIA"
+          category="Noticias"
           text="Conheça nosso sistema de atendimento ao cidadão"
-          buttonTitle="ACESSAR OUVIDORIA"
+          buttonTitle="ACESSAR Noticias"
           buttonType="principal"
-          href="/ouvidoria"
+          href="/Noticias"
         />
         <HomeCard
           isClickable={false}
@@ -42,7 +42,7 @@ function Home() {
         />
         <HomeCard
           isClickable={true}
-          backgroundImg='https://cdn-icons-png.flaticon.com/512/610/610128.png'  
+          backgroundImg="https://cdn-icons-png.flaticon.com/512/610/610128.png"
         />
       </div>
     </>

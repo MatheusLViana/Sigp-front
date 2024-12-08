@@ -1,19 +1,36 @@
-import './Newscard.css'
+import { Link } from "react-router-dom";
+import "./Newscard.css";
 
-function Newscard(props){
-  return(
-    <div className='newscard-container' onClick={props.link}>
-      <div
-        className='image-container'
-        style={props.imageurl===null ? {backgroundImage: 'url(../assets/newspaper.jpg)'}:{backgroundImage: 'url(' + props.imageurl + ')'}}
-      >
+function Newscard({ id, imageurl, category, title, resume }) {
+  return id ? (
+    <Link to={`/noticias/${id}`} className="newscard-link">
+      <div className="newscard-container">
+        <div
+          className="image-container"
+          style={{
+            backgroundImage: `url(${imageurl || "../assets/newspaper.jpg"})`, // Usa fallback de imagem
+          }}
+        ></div>
+        <p className="news-category">{category || "Sem categoria"}</p>
+        <h3 className="news-title">{title || "Título indisponível"}</h3>
+        <p className="news-resume">{resume || "Resumo indisponível"}</p>
+        <p className="news-plus">+Saiba Mais</p>
       </div>
-      <p className='news-category'>{props.category}</p>
-      <h3 className='news-title'>{props.title}</h3>
-      <p className='news-resume'>{props.resume}</p>
-      <p className='news-plus'>+Saiba Mais</p>
+    </Link>
+  ) : (
+    <div className="newscard-container">
+      <div
+        className="image-container"
+        style={{
+          backgroundImage: `url(${imageurl || "../assets/newspaper.jpg"})`,
+        }}
+      ></div>
+      <p className="news-category">{category || "Sem categoria"}</p>
+      <h3 className="news-title">{title || "Título indisponível"}</h3>
+      <p className="news-resume">{resume || "Resumo indisponível"}</p>
+      <p className="news-plus">+Saiba Mais</p>
     </div>
-  )
+  );
 }
 
-export default Newscard
+export default Newscard;

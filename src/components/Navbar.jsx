@@ -1,8 +1,8 @@
-import { List } from 'react-bootstrap-icons';
-import logo from '../assets/LogoSIGP.png';
-import './Navbar.css';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { List } from "react-bootstrap-icons";
+import logo from "../assets/LogoSIGP.png";
+import "./Navbar.css";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -11,25 +11,25 @@ function Navbar() {
 
   // Verifica se o token existe ao carregar o componente
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem("access_token");
     setIsAuthenticated(!!token); // Define se o usuário está autenticado
   }, []);
 
   const handleLogout = () => {
     // Remove tokens do armazenamento
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('perfil');
-    localStorage.removeItem('id_usuario');
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("perfil");
+    localStorage.removeItem("id_usuario");
 
     setIsAuthenticated(false); // Atualiza o estado de autenticação
-    navigate('/home'); // Redireciona explicitamente para a página Home
+    navigate("/home"); // Redireciona explicitamente para a página Home
   };
 
   const handleClick = () => setClick(!click);
 
   return (
-    <div className={click ? 'navbar active' : 'navbar'}>
+    <div className={click ? "navbar active" : "navbar"}>
       <div className="navbar-container">
         <a className="logo-container" href="/home">
           <img src={logo} className="navbar-logo" alt="logo" />
@@ -39,8 +39,8 @@ function Navbar() {
           <a className="navbar-thin-link" href="/services">
             Serviços
           </a>
-          <a className="navbar-thin-link" href="/ouvidoria">
-            Ouvidoria
+          <a className="navbar-thin-link" href="/Noticias">
+            Noticias
           </a>
           <a className="navbar-thin-link" href="/status">
             Status de Serviços
@@ -66,15 +66,15 @@ function Navbar() {
           <List size={36} />
         </div>
       </div>
-      <ul className={click ? 'mobile-menu-list active' : 'mobile-menu-list'}>
+      <ul className={click ? "mobile-menu-list active" : "mobile-menu-list"}>
         <li>
           <a className="navbar-thin-link" href="/services">
             Serviços
           </a>
         </li>
         <li>
-          <a className="navbar-thin-link" href="/ouvidoria">
-            Ouvidoria
+          <a className="navbar-thin-link" href="/Noticias">
+            Noticias
           </a>
         </li>
         <li>

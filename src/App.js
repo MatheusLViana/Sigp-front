@@ -7,7 +7,8 @@ import NewPassword from "./pages/NewPassword";
 import Register from "./pages/Register";
 import Services from "./pages/Services";
 import ServiceDetails from "./pages/ServicesDetail";
-import Ouvidoria from "./pages/Ouvidoria";
+import Noticias from "./pages/Noticias";
+import NoticiaDetalhada from "./pages/NoticiasDetail";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/:id" element={<ServiceDetails />} />
-          <Route path="/ouvidoria" element={<Ouvidoria />} />
+          <Route path="/noticias" element={<Noticias />} />
+          <Route path="/noticias/:id" element={<NoticiaDetalhada />} />
         </Routes>
       </div>
     </BrowserRouter>
