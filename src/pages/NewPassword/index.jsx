@@ -11,8 +11,8 @@ function NewPassword() {
       <div className='blue-card vertical-padding'>
       <div className='central-container'>
         <div className='logo-container'>
-            <img src={logo} className="navbar-logo" alt="logo" />
-            <p className='page-logo-txt'>Sistema Integrado de Gestão Pública</p>
+            <img src={logo} className="central-logo" alt="logo" />
+            <p className='page-logo-txt'>UniCidade</p>
         </div>
         <h1 className='page-title less-margin-bottom'>Esqueceu sua senha?</h1>
         <p className='page-text'>Não se preocupe, iremos mandar uma mensagem para você via e-mail, <br />a fim de que você recupere sua senha.</p>

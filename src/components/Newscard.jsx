@@ -11,9 +11,11 @@ function Newscard({ id, imageurl, category, title, resume }) {
             backgroundImage: `url(${imageurl || "../assets/newspaper.jpg"})`, // Usa fallback de imagem
           }}
         ></div>
-        <p className="news-category">{category || "Sem categoria"}</p>
-        <h3 className="news-title">{title || "Título indisponível"}</h3>
-        <p className="news-resume">{resume || "Resumo indisponível"}</p>
+        <div className='news-txt-block'>
+          <p className="news-category">{category || "Sem categoria"}</p>
+          <h3 className="news-title">{title || "Título indisponível"}</h3>
+          <p className="news-resume">{resume || "Resumo indisponível"}</p>
+        </div>
         <p className="news-plus">+Saiba Mais</p>
       </div>
     </Link>
@@ -25,9 +27,11 @@ function Newscard({ id, imageurl, category, title, resume }) {
           backgroundImage: `url(${imageurl || "../assets/newspaper.jpg"})`,
         }}
       ></div>
-      <p className="news-category">{category || "Sem categoria"}</p>
-      <h3 className="news-title">{title || "Título indisponível"}</h3>
-      <p className="news-resume">{resume || "Resumo indisponível"}</p>
+      <div className='news-txt-block'>
+        <p className="news-category">{category || "Sem categoria"}</p>
+        <h3 className="news-title">{title || "Título indisponível"}</h3>
+        <p className="news-resume">{resume || "Resumo indisponível"}</p>
+      </div>
       <p className="news-plus">+Saiba Mais</p>
     </div>
   );

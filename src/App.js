@@ -31,6 +31,9 @@ function App() {
           <Route path="/indicadores" element={<Indicadores />} />
         </Routes>
       </div>
+      <footer>
+        
+      </footer>
     </BrowserRouter>
   );
 }
