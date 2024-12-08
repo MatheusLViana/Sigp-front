@@ -1,72 +1,118 @@
-.detalhes-solicitacao-container {
+/* Estilo geral */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.solicitacao-detalhada-container {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: #004765;
 }
 
-.detalhes-header {
+.solicitacao-header {
   border-bottom: 2px solid #0078d4;
-  padding-bottom: 15px;
   margin-bottom: 20px;
 }
 
-.detalhes-header h1 {
+.solicitacao-header h1 {
   font-size: 24px;
   color: #0078d4;
-  margin-bottom: 10px;
 }
 
-.detalhes-header p {
-  font-size: 16px;
+.solicitacao-header p {
   margin: 5px 0;
+  font-size: 16px;
 }
 
-.detalhes-body h3 {
+.solicitacao-etapas h3 {
   font-size: 20px;
-  color: #0078d4;
   margin-bottom: 10px;
 }
 
-.etapas-list {
+.solicitacao-etapas ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .etapa-item {
-  background-color: #e3f2fd;
-  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin: 10px 0;
   padding: 15px;
-  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.etapa-item strong {
-  font-size: 16px;
-  color: #004765;
-}
-
-.etapa-item.etapa-concluida {
+.etapa-concluida {
   background-color: #d4edda;
 }
 
-.etapa-item.etapa-pendente {
+.etapa-pendente {
   background-color: #f8d7da;
 }
 
 .etapa-item span {
-  font-size: 20px;
+  font-size: 16px;
 }
 
-.detalhes-body p {
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   font-size: 16px;
   margin-top: 20px;
-  color: #004765;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.cancelar-btn {
+  background-color: #d9534f;
+  color: white;
+}
+
+.confirmar-btn {
+  background-color: #5bc0de;
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }

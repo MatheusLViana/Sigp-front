@@ -1,70 +1,105 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import "./index.css";
 
-function SolicitacaoDetalhes() {
-  const { id } = useParams(); // Captura o ID da solicitação a partir da URL
-  const [detalhes, setDetalhes] = useState(null);
+function SolicitacaoDetalhada() {
+  const { id } = useParams();
+  const [solicitacao, setSolicitacao] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchDetalhes = async () => {
+    const fetchSolicitacao = async () => {
       try {
         const response = await api.get(`/solicitacoes/${id}/`);
-        setDetalhes(response.data);
+        setSolicitacao(response.data);
       } catch (err) {
-        setError("Erro ao carregar os detalhes da solicitação.");
         console.error(err);
+        setError("Erro ao carregar os detalhes da solicitação.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchDetalhes();
+    fetchSolicitacao();
   }, [id]);
 
-  if (loading) return <p>Carregando detalhes da solicitação...</p>;
-  if (error) return <p className="error-message">{error}</p>;
+  const handleDelete = async () => {
+    try {
+      await api.delete(`/solicitacoes/${id}/`);
+      alert("Solicitação cancelada com sucesso!");
+      navigate("/solicitacoes");
+    } catch (err) {
+      console.error("Erro ao cancelar solicitação:", err);
+      alert("Erro ao cancelar a solicitação.");
+    }
+  };
+
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
-    <div className="detalhes-solicitacao-container">
-      <div className="detalhes-header">
-        <h1>{detalhes.servico_nome}</h1>
+    <div className="solicitacao-detalhada-container">
+      <header className="solicitacao-header">
+        <h1>{solicitacao.servico_nome}</h1>
         <p>
-          <strong>Status:</strong> {detalhes.status}
+          Status: <strong>{solicitacao.status}</strong>
         </p>
         <p>
-          <strong>Data da Solicitação:</strong>{" "}
-          {new Date(detalhes.data_solicitacao).toLocaleDateString()}
+          Data da Solicitação:{" "}
+          <strong>
+            {new Date(solicitacao.data_solicitacao).toLocaleDateString()}
+          </strong>
         </p>
-      </div>
-      <div className="detalhes-body">
-        <h3>Etapas da Solicitação</h3>
-        <ul className="etapas-list">
-          {detalhes.etapas.map((etapa, index) => (
+      </header>
+      <section className="solicitacao-etapas">
+        <h3>Etapas</h3>
+        <ul>
+          {solicitacao.etapas.map((etapa) => (
             <li
-              key={index}
+              key={etapa.id}
               className={`etapa-item ${
                 etapa.concluida ? "etapa-concluida" : "etapa-pendente"
               }`}
             >
-              <strong>
+              <span>
                 {etapa.ordem}. {etapa.nome_etapa}
-              </strong>
-              <p>{etapa.descricao_etapa}</p>
-              {etapa.concluida ? <span>✅</span> : <span>⏳</span>}
+              </span>
+              <span>{etapa.concluida ? "✔" : "❌"}</span>
             </li>
           ))}
         </ul>
-        <p>
-          <strong>Comentário do Servidor:</strong>{" "}
-          {detalhes.comentario_servidor || "Nenhum comentário disponível."}
-        </p>
-      </div>
+      </section>
+      <button className="btn cancelar-btn" onClick={() => setShowModal(true)}>
+        Cancelar Solicitação
+      </button>
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Tem certeza?</h2>
+            <p>
+              Deseja realmente cancelar esta solicitação? Esta ação não pode ser
+              desfeita.
+            </p>
+            <div className="modal-actions">
+              <button className="btn confirmar-btn" onClick={handleDelete}>
+                Sim, cancelar
+              </button>
+              <button
+                className="btn cancelar-btn"
+                onClick={() => setShowModal(false)}
+              >
+                Não, voltar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-export default SolicitacaoDetalhes;
+export default SolicitacaoDetalhada;
