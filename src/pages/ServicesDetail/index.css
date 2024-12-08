@@ -114,6 +114,29 @@
   font-size: 16px;
 }
 
+.solicitar-btn {
+  background-color: #00a444;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.solicitar-btn:hover {
+  background-color: #008837;
+  transform: scale(1.05);
+}
+
+.feedback {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #004765;
+}
+
 @media screen and (max-width: 960px) {
   .related-services ul {
     flex-direction: column;

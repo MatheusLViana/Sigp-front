@@ -1,30 +1,22 @@
-import { useState } from 'react';
-import api from '../../services/api';
-import logo from '../../assets/LogoSIGP.png';
-import './index.css';
+import React, { useState } from "react";
+import { useAuth } from "../../components/AuthContext";
+import logo from "../../assets/LogoSIGP.png";
+import "./index.css";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [feedback, setFeedback] = useState(''); // Para exibir mensagens de erro ou sucesso
+  const { login } = useAuth(); // Pega a função de login do contexto
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [feedback, setFeedback] = useState(""); // Para exibir mensagens de erro ou sucesso
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Evita o reload da página
     try {
-      const response = await api.post('/login/', { email, password });
-      const { access_token, refresh_token, perfil, id_usuario } = response.data;
-
-      // Armazena os tokens no localStorage (ou sessionStorage)
-      localStorage.setItem('access_token', access_token);
-      localStorage.setItem('refresh_token', refresh_token);
-      localStorage.setItem('perfil', perfil);
-      localStorage.setItem('id_usuario', id_usuario);
-
-      setFeedback('Login realizado com sucesso!');
-      // Redirecione o usuário ou realize outras ações
-      window.location.href = '/home';
+      await login(email, password); // Executa o login pelo contexto
+      setFeedback("Login realizado com sucesso!");
+      window.location.href = "/home"; // Redireciona o usuário
     } catch (error) {
-      setFeedback(error.response?.data?.error || 'Erro ao realizar login.');
+      setFeedback(error.response?.data?.error || "Erro ao realizar login.");
     }
   };
 
@@ -54,18 +46,6 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <p className="feedback-login">{feedback}</p>
-          <div className="form-sub-container">
-            <div className="login-check-container">
-              <input
-                className="login-checkbox"
-                type="checkbox"
-                id="remember"
-                name="remember"
-              />
-              <label htmlFor="remember"> Lembrar senha</label>
-            </div>
-            <a href="/new-password">Esqueceu a senha?</a>
-          </div>
           <input className="login-submit" type="submit" value="Logar" />
         </form>
         <div className="buttons-container">
