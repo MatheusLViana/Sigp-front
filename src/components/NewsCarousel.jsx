@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import Newscard from './Newscard';
-import './NewsCarousel.css';
-import api from '../services/api';
+import { useEffect, useState } from "react";
+import Newscard from "./Newscard";
+import "./NewsCarousel.css";
+import api from "../services/api";
 
 function NewsCarousel() {
   const [newsCards, setNewsCards] = useState([]);
@@ -68,13 +68,13 @@ function NewsCarousel() {
 
   function handleSegmentChange(segmentID) {
     const initialList = carrouselSegments.map((segment) =>
-      segment.id !== segmentID ? { ...segment, value: 0 } : segment,
+      segment.id !== segmentID ? { ...segment, value: 0 } : segment
     );
     const updatedList = initialList.map((segment) =>
-      segment.id === segmentID ? { ...segment, value: 1 } : segment,
+      segment.id === segmentID ? { ...segment, value: 1 } : segment
     );
     setCarrouselSegments(updatedList);
-    window.location.href = '#section' + segmentID;
+    window.location.href = "#section" + segmentID;
   }
 
   useEffect(() => {
@@ -115,10 +115,9 @@ function NewsCarousel() {
     const handleNews = async () => {
       try {
         const response = await api.get("/home/");
-        const news = response.data['noticias'];
+        const news = response.data["noticias"];
         setNewsCards(news);
       } catch (err) {
-        setError("Erro ao carregar as noticias. Tente novamente mais tarde.");
         console.error("Erro ao buscar noticias:", err);
       }
     };
@@ -154,7 +153,7 @@ function NewsCarousel() {
           return (
             <li key={segment.id}>
               <div
-                className={segment.value ? 'dot-flag active' : 'dot-flag'}
+                className={segment.value ? "dot-flag active" : "dot-flag"}
                 onClick={() => handleSegmentChange(segment.id)}
               />
             </li>
