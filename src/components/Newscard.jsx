@@ -5,7 +5,7 @@ function Newscard(props){
     <div className='newscard-container' onClick={props.link}>
       <div
         className='image-container'
-        style={{backgroundImage: 'url(' + props.imageurl + ')'}}
+        style={props.imageurl===null ? {backgroundImage: 'url(../assets/newspaper.jpg)'}:{backgroundImage: 'url(' + props.imageurl + ')'}}
       >
       </div>
       <p className='news-category'>{props.category}</p>

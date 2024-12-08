@@ -114,13 +114,12 @@ function NewsCarousel() {
   useEffect(() => {
     const handleNews = async () => {
       try {
-        const response = await api.get('/api/home');
+        const response = await api.get("/home/");
         const news = response.data['noticias'];
-        setNewsCards(JSON.stringify(news));
-        console.log(JSON.stringify(news));
-      } catch (error) {
-        console.log(error);
-        console.log('resposta');
+        setNewsCards(news);
+      } catch (err) {
+        setError("Erro ao carregar as noticias. Tente novamente mais tarde.");
+        console.error("Erro ao buscar noticias:", err);
       }
     };
     handleNews();
@@ -137,10 +136,10 @@ function NewsCarousel() {
                   return (
                     <li className="card-item" key={card.id}>
                       <Newscard
-                        imageurl={card.imageurl}
-                        category={card.category}
-                        title={card.title}
-                        resume={card.resume}
+                        imageurl={card.imagem}
+                        category={card.categoria}
+                        title={card.titulo}
+                        resume={card.resumo}
                       />
                     </li>
                   );
