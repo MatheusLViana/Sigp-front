@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Doughnut, Bar } from "react-chartjs-2";
+import api from "../../services/api";
+import "./index.css";
+
 import {
   Chart as ChartJS,
   ArcElement,
@@ -9,10 +12,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import api from "../../services/api";
-import "./index.css";
 
-// Registre os elementos do Chart.js
 ChartJS.register(
   ArcElement,
   BarElement,
@@ -40,32 +40,38 @@ function Dashboard() {
           ]);
 
         setGenderData({
-          labels: genderResponse.data.labels,
+          labels: genderResponse.data.labels || [],
           datasets: [
             {
-              data: genderResponse.data.counts,
-              backgroundColor: ["#36A2EB", "#FF6384", "#FFCE56"],
+              data: genderResponse.data.counts || [],
+              backgroundColor: [
+                "#36A2EB",
+                "#FF6384",
+                "#FFCE56",
+                "#4BC0C0",
+                "#9966FF",
+              ],
             },
           ],
         });
 
         setDistrictData({
-          labels: districtResponse.data.labels,
+          labels: districtResponse.data.labels || [],
           datasets: [
             {
               label: "População por Distrito",
-              data: districtResponse.data.counts,
+              data: districtResponse.data.counts || [],
               backgroundColor: "#36A2EB",
             },
           ],
         });
 
         setIncomeData({
-          labels: incomeResponse.data.labels,
+          labels: incomeResponse.data.labels || [],
           datasets: [
             {
               label: "Renda Média por Distrito",
-              data: incomeResponse.data.avg_incomes,
+              data: incomeResponse.data.avg_incomes || [],
               backgroundColor: "#FFCE56",
             },
           ],
@@ -91,36 +97,59 @@ function Dashboard() {
         <p>Visão Geral dos Dados Populacionais</p>
       </header>
 
+      {/* Linha 1: Cartões */}
       <section className="metrics-container">
         <div className="metric-card">
           <h2>Total de Gêneros</h2>
-          <p>{genderData?.datasets[0].data.reduce((a, b) => a + b, 0)}</p>
+          <p>
+            {genderData?.datasets?.[0]?.data?.reduce((a, b) => a + b, 0) ||
+              "N/A"}
+          </p>
         </div>
         <div className="metric-card">
           <h2>Distritos Monitorados</h2>
-          <p>{districtData?.labels.length}</p>
+          <p>{districtData?.labels?.length || "N/A"}</p>
         </div>
         <div className="metric-card">
           <h2>Média de Renda</h2>
           <p>
             R${" "}
-            {incomeData?.datasets[0].data.reduce((a, b) => a + b, 0).toFixed(2)}
+            {incomeData?.datasets?.[0]?.data
+              ?.reduce((a, b) => a + b, 0)
+              .toFixed(2) || "N/A"}
           </p>
         </div>
       </section>
 
-      <section className="charts-container">
+      {/* Linha 2: Gráficos lado a lado */}
+      <section className="charts-row">
         <div className="chart-item">
           <h3>Distribuição por Gênero</h3>
-          <Doughnut data={genderData} />
+          {genderData ? (
+            <Doughnut data={genderData} />
+          ) : (
+            <p>Dados não disponíveis</p>
+          )}
         </div>
         <div className="chart-item">
           <h3>População por Distrito</h3>
-          <Bar data={districtData} />
+          {districtData ? (
+            <Bar data={districtData} />
+          ) : (
+            <p>Dados não disponíveis</p>
+          )}
         </div>
+      </section>
+
+      {/* Linha 3: Gráfico de barra ocupando toda a largura */}
+      <section className="chart-row-full">
         <div className="chart-item">
           <h3>Renda Média por Distrito</h3>
-          <Bar data={incomeData} />
+          {incomeData ? (
+            <Bar data={incomeData} options={{ responsive: true }} />
+          ) : (
+            <p>Dados não disponíveis</p>
+          )}
         </div>
       </section>
     </div>
