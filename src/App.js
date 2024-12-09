@@ -9,9 +9,9 @@ import Services from "./pages/Services";
 import ServiceDetails from "./pages/ServicesDetail";
 import Noticias from "./pages/Noticias";
 import NoticiaDetalhada from "./pages/NoticiasDetail";
-import Indicadores from "./pages/Indicadores";
 import Solicitações from "./pages/Solicitacoes";
 import SolicitacaoDetalhes from "./pages/SolicitacoesDetail";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -30,22 +30,23 @@ function App() {
           <Route path="/services/:id" element={<ServiceDetails />} />
           <Route path="/noticias" element={<Noticias />} />
           <Route path="/noticias/:id" element={<NoticiaDetalhada />} />
-          <Route path="/indicadores" element={<Indicadores />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/solicitacoes" element={<Solicitações />} />
           <Route path="/solicitacoes/:id" element={<SolicitacaoDetalhes />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
       <footer>
         <div className="intern-footer-div">
           <div className="subdiv-row">
             <div className="subdiv-column">
-              <a href='#'>SECRETARIAS</a>
-              <a href='#'>OUVIDORIA</a>
-              <a href='#'>TRANSPARÊNCIA</a>
+              <a href="#">SECRETARIAS</a>
+              <a href="#">OUVIDORIA</a>
+              <a href="#">TRANSPARÊNCIA</a>
             </div>
             <div className="subdiv-column">
-              <a href='#'>ÁREA DA IMPRENSA</a>
-              <a href='#'>CONTATOS ÚTEIS</a>
+              <a href="#">ÁREA DA IMPRENSA</a>
+              <a href="#">CONTATOS ÚTEIS</a>
             </div>
           </div>
           <p className="version-txt">UniCidade 2024 V1.0</p>

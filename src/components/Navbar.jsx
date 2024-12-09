@@ -31,7 +31,7 @@ function Navbar() {
           <a className="navbar-thin-link" href="/Noticias">
             Notícias
           </a>
-          <a className="navbar-thin-link" href="/indicadores">
+          <a className="navbar-thin-link" href="/Dashboard">
             Indicadores
           </a>
           {user && (
@@ -47,7 +47,8 @@ function Navbar() {
                 Olá, {user.nome_completo.split(" ")[0]}!
               </span>
               <button className="logout-btn" onClick={handleLogout}>
-                <BoxArrowLeft size={32}/><span>SAIR</span>
+                <BoxArrowLeft size={32} />
+                <span>SAIR</span>
               </button>
             </>
           ) : (
@@ -82,8 +83,8 @@ function Navbar() {
           </a>
         </li>
         <li>
-          <a className="navbar-thin-link" href="/indicadores">
-            Indicadores
+          <a className="navbar-thin-link" href="/Dashboard">
+            Dashboard
           </a>
         </li>
         {user && (
@@ -96,7 +97,8 @@ function Navbar() {
         {user ? (
           <li>
             <button className="logout-btn" onClick={handleLogout}>
-              <BoxArrowLeft size={32}/><span>SAIR</span>
+              <BoxArrowLeft size={32} />
+              <span>SAIR</span>
             </button>
           </li>
         ) : (

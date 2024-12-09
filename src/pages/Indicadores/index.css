@@ -1,23 +1,92 @@
-.indicadores-container {
+.Dashboard-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.Dashboard-title {
+  text-align: center;
+  color: #004765;
+  margin-bottom: 20px;
+}
+
+.Dashboard-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.indicador-item {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.indicador-item h2 {
+  margin: 0 0 10px;
+  color: #0078d4;
+}
+
+.indicador-item p {
+  margin: 0 0 5px;
+  color: #333;
+}
+
+.indicador-item strong {
+  color: #004765;
+}
+
+.Dashboard-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.Dashboard-title {
+  color: #004765;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  width: 50%;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Dashboard-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Ocupa a tela toda */
-  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
   background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.indicadores-title {
+.Dashboard-title {
   font-size: 24px;
+  font-weight: bold;
   color: #333;
   margin-bottom: 20px;
 }
 
-.indicadores-image {
-  max-width: 80%;
+.chart-container {
+  width: 100%;
+  max-width: 600px;
   height: auto;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 20px;
 }
