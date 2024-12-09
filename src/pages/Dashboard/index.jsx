@@ -100,7 +100,7 @@ function Dashboard() {
       {/* Linha 1: Cartões */}
       <section className="metrics-container">
         <div className="metric-card">
-          <h2>Total de Gêneros</h2>
+          <h2>População Total</h2>
           <p>
             {genderData?.datasets?.[0]?.data?.reduce((a, b) => a + b, 0) ||
               "N/A"}
